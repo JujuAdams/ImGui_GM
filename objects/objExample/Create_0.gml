@@ -24,17 +24,17 @@ imgui_window = ImGui.__Window; // Capture the created gamewindow.
 
 /// Optional: load and save ini file in a custom path.
 if ini_filename != "" {
-    ImGui.IniFilename(ini_filename);
-    ImGui.LoadIniSettingsFromDisk(ini_filename);
+	ImGui.IniFilename(ini_filename);
+	ImGui.LoadIniSettingsFromDisk(ini_filename);
 }
 /// Optional: Create a new state example
 /*
-    imgui_state2 = new ImGuiState(); // Creates a Context [internal]
-    imgui_window2 = new ImGuiBaseMainWindow(window_handle());
-    // imgui_state2.some_attribute = some_value; // modify some data [example]
-    imgui_state2.Initialize(imgui_window2, _configs); // Initialize the state. Attach state to the window. Set the config flags to add. This sets as the current state.
-    ImGui.AddFontDefault(); // Add default font to the state.
-    imgui_state.Use(); // Return back to main state.
+	imgui_state2 = new ImGuiState(); // Creates a Context [internal]
+	imgui_window2 = new ImGuiBaseMainWindow(window_handle());
+	// imgui_state2.some_attribute = some_value; // modify some data [example]
+	imgui_state2.Initialize(imgui_window2, _configs); // Initialize the state. Attach state to the window. Set the config flags to add. This sets as the current state.
+	ImGui.AddFontDefault(); // Add default font to the state.
+	imgui_state.Use(); // Return back to main state.
 */
 
 /// Optional: Set the main state active.
@@ -52,7 +52,7 @@ window_class_no_automerge = new ImGuiWindowClass(2, -1, ImGuiViewportFlags.NoAut
 
 // Demos
 demo_open = true;
-    demo_multi_select = true;
+	demo_multi_select = true;
 
 // MultiSelect
 multi_select_selection_size = 40;
@@ -62,9 +62,9 @@ randomize();
 
 // Samples
 ExampleNames = [
-    "Artichoke", "Arugula", "Asparagus", "Avocado", "Bamboo Shoots", "Bean Sprouts", "Beans", "Beet", "Belgian Endive", "Bell Pepper",
-    "Bitter Gourd", "Bok Choy", "Broccoli", "Brussels Sprouts", "Burdock Root", "Cabbage", "Calabash", "Capers", "Carrot", "Cassava",
-    "Cauliflower", "Celery", "Celery Root", "Celcuce", "Chayote", "Chinese Broccoli", "Corn", "Cucumber"
+	"Artichoke", "Arugula", "Asparagus", "Avocado", "Bamboo Shoots", "Bean Sprouts", "Beans", "Beet", "Belgian Endive", "Bell Pepper",
+	"Bitter Gourd", "Bok Choy", "Broccoli", "Brussels Sprouts", "Burdock Root", "Cabbage", "Calabash", "Capers", "Carrot", "Cassava",
+	"Cauliflower", "Celery", "Celery Root", "Celcuce", "Chayote", "Chinese Broccoli", "Corn", "Cucumber"
 ];
 
 main_open = true; // Main window
@@ -80,17 +80,17 @@ try {
 	_static = undefined;
 }
 
-col = c_blue;                     // for TextColored
-col2 = c_white;                   // for Image & ColorPicker
-col3 = c_lime;                    // for ColorPicker3
+col = c_blue;					 // for TextColored
+col2 = c_white;				   // for Image & ColorPicker
+col3 = c_lime;					// for ColorPicker3
 col4 = new ImColor(c_aqua, 0.5);  // for ColorPicker4
 col5 = c_fuchsia;
 col6 = new ImColor(irandom(255), irandom(255), irandom(255), random(1));
-dir = ImGuiDir.Right;             // for ArrowButton
+dir = ImGuiDir.Right;			 // for ArrowButton
 
-surf = -1;                        // for Surface
+surf = -1;						// for Surface
 
-input_val = "This is a text input! You can type things here! Or even paste new text!";        // for InputText
+input_val = "This is a text input! You can type things here! Or even paste new text!";		// for InputText
 input_val_ml = "This is a multiline input!\nBelieve it or not, you can have multiple lines here.\n\nPretty neat, right?";
 input_hint = "";
 

@@ -73,8 +73,8 @@ var base_x = 0;
 var base_y = 0;
 // Positions are relative to monitor top-left, if not using GM renderer.
 if (ImGui.__ExtFlags & ImGuiExtFlags.GM == 0) { 
-    base_x = window_get_x();
-    base_y = window_get_y();
+	base_x = window_get_x();
+	base_y = window_get_y();
 }
 
 // Adapted from https://gist.github.com/AidanSun05/953f1048ffe5699800d2c92b88c36d9f
@@ -126,23 +126,23 @@ if (main_open) {
 			var _str = "ImGui_GM v" + IMGUI_GM_VERSION;
 			for(var i = 0, _i = string_length(_str); i < _i; i++) {
 				var _c = make_color_hsv(255 * (i / _i), 128, 255);
-                ImGui.SetNextItemWidth(string_width(_str));
+				ImGui.SetNextItemWidth(string_width(_str));
 				ImGui.TextColored(string_char_at(_str, i + 1), _c);
 				if (i < _i - 1) ImGui.SameLine(0,2);
 			}
 			ImGui.TextColored("Developed by Nommiin!", c_aqua);
-            ImGui.Separator();
+			ImGui.Separator();
 			ImGui.TextColored("Source URL: ", #3bb1f8);
-            ImGui.SameLine(0,0);
-            ImGui.TextLinkOpenURL("nommiin/ImGui_GM", "https://github.com/nommiin/ImGui_GM");
-            ImGui.Separator();
+			ImGui.SameLine(0,0);
+			ImGui.TextLinkOpenURL("nommiin/ImGui_GM", "https://github.com/nommiin/ImGui_GM");
+			ImGui.Separator();
 			if (!is_undefined(_static)) {
-                _static.__State.Display.Scale = max(0.5, ImGui.InputDouble("Scale", _static.__State.Display.Scale, 0.1, 0.25));
+				_static.__State.Display.Scale = max(0.5, ImGui.InputDouble("Scale", _static.__State.Display.Scale, 0.1, 0.25));
 			} else {
 				ImGui.BeginDisabled();
 				ImGui.InputDouble("ImGui.__Scale", 1);
 				ImGui.EndDisabled();
-                ImGui.SameLine();
+				ImGui.SameLine();
 				ImGui.TextColored("(!)", c_red, 1);
 				if (ImGui.IsItemHovered()) {
 					ImGui.SetTooltip("Your GameMaker runtime version (" + GM_runtime_version + ") does not support static_get\nPlease update to a newer runtime if possible!");
@@ -198,14 +198,14 @@ if (main_open) {
 			
 			ImGui.Text("ImGui::Surface");
 			surface_set_target(surf);
-            var xx, yy;
-            if (ImGui.__ExtFlags & ImGuiExtFlags.GM == 0) {
-                xx = display_mouse_get_x() - ImGui.GetCursorScreenPosX();
-                yy = display_mouse_get_y() - ImGui.GetCursorScreenPosY();
-            } else {
-                xx = window_mouse_get_x() - ImGui.GetCursorScreenPosX();
-                yy = window_mouse_get_y() - ImGui.GetCursorScreenPosY();
-            }
+			var xx, yy;
+			if (ImGui.__ExtFlags & ImGuiExtFlags.GM == 0) {
+				xx = display_mouse_get_x() - ImGui.GetCursorScreenPosX();
+				yy = display_mouse_get_y() - ImGui.GetCursorScreenPosY();
+			} else {
+				xx = window_mouse_get_x() - ImGui.GetCursorScreenPosX();
+				yy = window_mouse_get_y() - ImGui.GetCursorScreenPosY();
+			}
 			var c = make_colour_hsv(255 * ((current_time % 1000) / 1000), 128, 255);
 			draw_circle_color(xx, yy, 4, c, c, false);
 			surface_reset_target();
@@ -297,31 +297,31 @@ if (main_open) {
 			ImGui.Text("Tabs");
 			ImGui.Separator();
 			if (ImGui.BeginTabBar("MyTabBar"))
-            {
+			{
 				var ret = ImGui.BeginTabItem("Closable", tab1, undefined, ImGuiReturnMask.Both);
 				tab1 = ret & ImGuiReturnMask.Pointer;
 				if (ret & ImGuiReturnMask.Return) {
-	                ImGui.Text("This is a closable tab!\nblah blah blah blah blah");
-	                ImGui.EndTabItem();
+					ImGui.Text("This is a closable tab!\nblah blah blah blah blah");
+					ImGui.EndTabItem();
 				}
 				
-                if (ImGui.BeginTabItem("Avocado"))
-                {
-                    ImGui.Text("This is the Avocado tab!\nblah blah blah blah blah");
-                    ImGui.EndTabItem();
-                }
-                if (ImGui.BeginTabItem("Broccoli"))
-                {
-                    ImGui.Text("This is the Broccoli tab!\nblah blah blah blah blah");
-                    ImGui.EndTabItem();
-                }
-                if (ImGui.BeginTabItem("Cucumber"))
-                {
-                    ImGui.Text("This is the Cucumber tab!\nblah blah blah blah blah");
-                    ImGui.EndTabItem();
-                }
-                ImGui.EndTabBar();
-            }
+				if (ImGui.BeginTabItem("Avocado"))
+				{
+					ImGui.Text("This is the Avocado tab!\nblah blah blah blah blah");
+					ImGui.EndTabItem();
+				}
+				if (ImGui.BeginTabItem("Broccoli"))
+				{
+					ImGui.Text("This is the Broccoli tab!\nblah blah blah blah blah");
+					ImGui.EndTabItem();
+				}
+				if (ImGui.BeginTabItem("Cucumber"))
+				{
+					ImGui.Text("This is the Cucumber tab!\nblah blah blah blah blah");
+					ImGui.EndTabItem();
+				}
+				ImGui.EndTabBar();
+			}
 		ImGui.EndChild();
 		
 		ImGui.SameLine();
@@ -405,7 +405,7 @@ if (main_open) {
 			ImGui.Text("Fonts");
 			ImGui.Separator();
 			ImGui.Text("You can load TTF/OTF font files from disk!");
-		    ImGui.PushFont(font_roboto);
+			ImGui.PushFont(font_roboto);
 			ImGui.TextColored("And use them wherever!", c_aqua);
 			ImGui.Text("Pretty neat, right?!");
 			ImGui.PopFont();
@@ -442,18 +442,18 @@ ImGui.End();
 
 // GM Demo
 if (demo_open) {
-    ImGui.SetNextWindowPos(base_x+30, base_y+350, ImGuiCond.FirstUseEver);
-    ImGui.SetNextWindowSize(300,200, ImGuiCond.FirstUseEver);
+	ImGui.SetNextWindowPos(base_x+30, base_y+350, ImGuiCond.FirstUseEver);
+	ImGui.SetNextWindowSize(300,200, ImGuiCond.FirstUseEver);
 	ImGui.Begin("Demos");
 	if (demo_multi_select) {
 		if (ImGui.TreeNode("Multi-Select")) {
 			ImGui.Text("Supported features:");
-            ImGui.BulletText("Keyboard navigation (arrows, page up/down, home/end, space).");
-            ImGui.BulletText("Ctrl modifier to preserve and toggle selection.");
-            ImGui.BulletText("Shift modifier for range selection.");
-            ImGui.BulletText("CTRL+A to select all.");
-            ImGui.BulletText("Escape to clear selection.");
-            ImGui.BulletText("Click and drag to box-select.");
+			ImGui.BulletText("Keyboard navigation (arrows, page up/down, home/end, space).");
+			ImGui.BulletText("Ctrl modifier to preserve and toggle selection.");
+			ImGui.BulletText("Shift modifier for range selection.");
+			ImGui.BulletText("CTRL+A to select all.");
+			ImGui.BulletText("Escape to clear selection.");
+			ImGui.BulletText("Click and drag to box-select.");
 
 			ImGui.Text(string("Selection: {0}/{1}", multi_select_selection.GetSize(), multi_select_selection_size));
 

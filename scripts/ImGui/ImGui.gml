@@ -4502,8 +4502,8 @@ function ImGui() constructor {
 	/// @desc Where the (GML) magic happens, safe from code generation
 	static __State = undefined;
 	static __Window = undefined;
-    
-    static CreateVtxFormat = function() {
+	
+	static CreateVtxFormat = function() {
 		vertex_format_begin();
 		vertex_format_add_position();
 		vertex_format_add_texcoord();
@@ -4511,14 +4511,14 @@ function ImGui() constructor {
 		return vertex_format_end();
 	}
 
-    static __MainWindowHandle = window_handle();
+	static __MainWindowHandle = window_handle();
 	static __MainWindow = undefined;
-    static __VtxFormat = CreateVtxFormat();
+	static __VtxFormat = CreateVtxFormat();
 	static __Uniform = shader_get_uniform(shdImGui, "u_ClipRect");
-    static __InputMapping = __imgui_create_input_mapping();
-    static __CursorMapping = __imgui_create_cursor_mapping();
-    
-    static __ExtFlags = ImGuiExtFlags.IMPL_WIN32 | ImGuiExtFlags.IMPL_DX11 | ImGuiExtFlags.GM;
+	static __InputMapping = __imgui_create_input_mapping();
+	static __CursorMapping = __imgui_create_cursor_mapping();
+	
+	static __ExtFlags = ImGuiExtFlags.IMPL_WIN32 | ImGuiExtFlags.IMPL_DX11 | ImGuiExtFlags.GM;
 
 	static __CursorPrev = -1;
 	static __InputRequested = false;
@@ -4526,46 +4526,46 @@ function ImGui() constructor {
 
 	static __Initialized = false;
 
-    static toString = function() {
-        return $"<ImGui {string(__Window)}>";
-    }
-    
+	static toString = function() {
+		return $"<ImGui {string(__Window)}>";
+	}
+	
 	static __Initialize = function(ww_or_state_or_cfg=undefined, ctx=undefined) {
-        if __Initialized return;
+		if __Initialized return;
 
 		// Setup received parameters
 		var ww = undefined,
 		_ctx_created = false,
 		_cbf_created = true,
 		_fbf_created = true,
-        _config_override_set = ImGuiConfigFlags.None,
-        new_state = undefined;
+		_config_override_set = ImGuiConfigFlags.None,
+		new_state = undefined;
 		
 		if is_instanceof(ww_or_state_or_cfg, ImGuiState) {
 			new_state = ww_or_state_or_cfg;
 
 		} else if is_int32(ww_or_state_or_cfg) or is_int64(ww_or_state_or_cfg) or is_real(ww_or_state_or_cfg){
-            _config_override_set = ww_or_state_or_cfg;
-            
-        } else if is_struct(ww_or_state_or_cfg) {
-            ww = ww_or_state_or_cfg;
+			_config_override_set = ww_or_state_or_cfg;
+			
+		} else if is_struct(ww_or_state_or_cfg) {
+			ww = ww_or_state_or_cfg;
 
-        }
+		}
 
-        if ww == undefined {
-            ImGui.__MainWindow ??= new ImGuiBaseMainWindow();
-            ww = ImGui.__MainWindow;
-        }
+		if ww == undefined {
+			ImGui.__MainWindow ??= new ImGuiBaseMainWindow();
+			ww = ImGui.__MainWindow;
+		}
 
-        ww ??= ImGui.__MainWindow;
-        new_state ??= new ImGuiState();
+		ww ??= ImGui.__MainWindow;
+		new_state ??= new ImGuiState();
 
-        if is_int32(ctx) or is_int64(ctx) or is_real(ctx) {
-            _config_override_set = ctx;
-            ctx = undefined;
-        }
-        if ctx == undefined {
-            if new_state.Engine.Context != pointer_null {
+		if is_int32(ctx) or is_int64(ctx) or is_real(ctx) {
+			_config_override_set = ctx;
+			ctx = undefined;
+		}
+		if ctx == undefined {
+			if new_state.Engine.Context != pointer_null {
 				ctx = new_state.Engine.Context;
 			} else {
 				ctx = CreateContext();
@@ -4581,88 +4581,88 @@ function ImGui() constructor {
 
 		var inited = new_state.__Initialize(_config_override_set);
 
-        if inited == pointer_null or inited == undefined {
-            if _ctx_created DestroyContext(__State.Engine.Context);
-            if _cbf_created buffer_delete(__State.Renderer.CmdBuffer);
-            if _fbf_created buffer_delete(__State.Renderer.FontBuffer);
+		if inited == pointer_null or inited == undefined {
+			if _ctx_created DestroyContext(__State.Engine.Context);
+			if _cbf_created buffer_delete(__State.Renderer.CmdBuffer);
+			if _fbf_created buffer_delete(__State.Renderer.FontBuffer);
 			__State.Engine.Context = pointer_null;
-            __State.Renderer.CmdBuffer = -1;
-            __State.Renderer.FontBuffer = -1;
-            __Initialized = false;
-            return false;
-        }
-        __Initialized = true;
-        new_state.Use();
-        return true;
+			__State.Renderer.CmdBuffer = -1;
+			__State.Renderer.FontBuffer = -1;
+			__Initialized = false;
+			return false;
+		}
+		__Initialized = true;
+		new_state.Use();
+		return true;
 	}
 
-    static __Shutdown = function(state=undefined) {
-        if !__Initialized return;
-        state ??= __State; if state != __State state.Use();
-        
-        if (__imgui_shutdown(__State.Engine.Context)) {
-            __Initialized = false;
-            __State.Destroy();
-            delete __State;
-            return true;
-        }
-        return false;
-    }
+	static __Shutdown = function(state=undefined) {
+		if !__Initialized return;
+		state ??= __State; if state != __State state.Use();
+		
+		if (__imgui_shutdown(__State.Engine.Context)) {
+			__Initialized = false;
+			__State.Destroy();
+			delete __State;
+			return true;
+		}
+		return false;
+	}
 
 	static __NewFrame = function(state=undefined) {
-        if !__Initialized return;
-        state ??= __State; if state != __State state.Use();
-        
-    	var _dwidth = display_get_width(), _dheight = display_get_height(), _focus = false;
-        var _wwidth = 0, _wheight = 0;
+		if !__Initialized return;
+		state ??= __State; if state != __State state.Use();
+		
+		var _dwidth = display_get_width(), _dheight = display_get_height(), _focus = false;
+		var _wwidth = 0, _wheight = 0;
 
 		_wwidth = __State.Engine.Window.GetWidth();
 		_wheight = __State.Engine.Window.GetHeight();
 		_focus = __State.Engine.Window.HasFocus();
 
-    	// Check surface
-        if (ImGui.__ExtFlags & ImGuiExtFlags.RENDERER_GM) {
-        	if (!surface_exists(__State.Renderer.Surface)) {
-        		__State.Renderer.Surface = surface_create(max(1, _wwidth), max(1, _wheight));	
-    	    } else {
-                surface_resize(__State.Renderer.Surface, max(1, _wwidth), max(1, _wheight));
-            }
-        }
+		// Check surface
+		if (ImGui.__ExtFlags & ImGuiExtFlags.RENDERER_GM) {
+			if (!surface_exists(__State.Renderer.Surface)) {
+				__State.Renderer.Surface = surface_create(max(1, _wwidth), max(1, _wheight));	
+			} else {
+				surface_resize(__State.Renderer.Surface, max(1, _wwidth), max(1, _wheight));
+			}
+		}
 
-        if _wwidth != 0 __State.Display.Width = _wwidth;
-        if _wheight != 0 __State.Display.Height = _wheight;
-    	__State.Engine.Time = delta_time / 1_000_000;
-    	__State.Engine.Framerate = game_get_speed(gamespeed_fps);
+		if _wwidth != 0 __State.Display.Width = _wwidth;
+		if _wheight != 0 __State.Display.Height = _wheight;
+		__State.Engine.Time = delta_time / 1_000_000;
+		__State.Engine.Framerate = game_get_speed(gamespeed_fps);
 
-        if ((_wwidth > 0 && _wheight > 0)) {
-    		for(var i = ImGuiKey.NamedKey_BEGIN; i < ImGuiKey.NamedKey_END; i++) {
-    			var key = ImGui.__InputMapping[i];
-    			if (key > -1) __imgui_key(i, keyboard_check_direct(key));
-    		}
-    		__imgui_key(ImGuiKey.ImGuiMod_Ctrl, keyboard_check_direct(vk_lcontrol));
-    		__imgui_key(ImGuiKey.ImGuiMod_Shift, keyboard_check_direct(vk_lshift));
-    		__imgui_key(ImGuiKey.ImGuiMod_Alt, keyboard_check_direct(vk_lalt));
+		if ((_wwidth > 0 && _wheight > 0)) {
+			for(var i = ImGuiKey.NamedKey_BEGIN; i < ImGuiKey.NamedKey_END; i++) {
+				var key = ImGui.__InputMapping[i];
+				if (key > -1) __imgui_key(i, keyboard_check_direct(key));
+			}
+			__imgui_key(ImGuiKey.ImGuiMod_Ctrl, keyboard_check_direct(vk_lcontrol));
+			__imgui_key(ImGuiKey.ImGuiMod_Shift, keyboard_check_direct(vk_lshift));
+			__imgui_key(ImGuiKey.ImGuiMod_Alt, keyboard_check_direct(vk_lalt));
 
-    		if (__imgui_want_text_input(undefined)) {
-    			if (!__InputRequested) {
-    				__InputRequested = true;
-    				__InputStore = keyboard_string;
-    				keyboard_string = "";
-    			}
-    			if (__imgui_input(keyboard_string)) keyboard_string = "";	
-    		} else {
-    			if (__InputRequested) {
-    				keyboard_string = __InputStore;
-    				__InputRequested = false;
-    			}
-    		}
+			if (__imgui_want_text_input(undefined)) {
+				if (!__InputRequested) {
+					__InputRequested = true;
+					__InputStore = keyboard_string;
+					keyboard_string = "";
+				}
+				if (__imgui_input(keyboard_string)) keyboard_string = "";	
+			} else {
+				if (__InputRequested) {
+					keyboard_string = __InputStore;
+					__InputRequested = false;
+				}
+			}
 
 			var _x = __State.Engine.Window.GetX();
 			var _y = __State.Engine.Window.GetY();
 
-            var _do_mouse = (_focus == true);
+			var _do_mouse = (_focus == true);
 
-            if _do_mouse {
+			if _do_mouse {
 				__State.Input.Mouse.X = __State.Engine.Window.MouseGetX();
 				__State.Input.Mouse.Y = __State.Engine.Window.MouseGetY();
 				for(var i = 0; i < 3; i++) __imgui_mouse(i, __State.Engine.Window.MouseCheckButton(i + 1));
@@ -4670,117 +4670,117 @@ function ImGui() constructor {
 				else if (__State.Engine.Window.MouseWheelDown()) __imgui_mouse_wheel(0, -1);
 
 				var _cursor = __imgui_mouse_cursor();
-            	if (_cursor != __CursorPrev) {
+				if (_cursor != __CursorPrev) {
 					__State.Engine.Window.SetCursor(ImGui.__CursorMapping[_cursor + 1]);
-            		__CursorPrev = _cursor;
-            	}
-            }
-        }
+					__CursorPrev = _cursor;
+				}
+			}
+		}
 
-        var _data = __State.__GetData(); __imgui_new_frame(_data);
+		var _data = __State.__GetData(); __imgui_new_frame(_data);
 
-        if (buffer_peek(__State.Renderer.FontBuffer, 0, buffer_bool)) {
-        	if (sprite_exists(__State.Display.Font)) sprite_delete(__State.Display.Font);
-        	var font = surface_create(buffer_peek(__State.Renderer.FontBuffer, 1, buffer_u32), buffer_peek(__State.Renderer.FontBuffer, 5, buffer_u32));
-        	buffer_set_surface(__State.Renderer.FontBuffer, font, 9);
-        	__State.Display.Font = sprite_create_from_surface(font, 0, 0, surface_get_width(font), surface_get_height(font), false, false, 0, 0);
-        	surface_free(font);
-            __State.Renderer.UpdateFont = false;
-        }
+		if (buffer_peek(__State.Renderer.FontBuffer, 0, buffer_bool)) {
+			if (sprite_exists(__State.Display.Font)) sprite_delete(__State.Display.Font);
+			var font = surface_create(buffer_peek(__State.Renderer.FontBuffer, 1, buffer_u32), buffer_peek(__State.Renderer.FontBuffer, 5, buffer_u32));
+			buffer_set_surface(__State.Renderer.FontBuffer, font, 9);
+			__State.Display.Font = sprite_create_from_surface(font, 0, 0, surface_get_width(font), surface_get_height(font), false, false, 0, 0);
+			surface_free(font);
+			__State.Renderer.UpdateFont = false;
+		}
 	}
 	
-    static __EndFrame = function(state=undefined) {
-        if !__Initialized return;
-        state ??= __State; if state != __State state.Use();
-        
-        __imgui_end_frame();
-    }
-
-    static __Render = function(state=undefined) {
-        if !__Initialized return;
+	static __EndFrame = function(state=undefined) {
+		if !__Initialized return;
 		state ??= __State; if state != __State state.Use();
-
-        __imgui_render();
+		
+		__imgui_end_frame();
 	}
-    
-    static __Draw = function(state=undefined, _resize_app_surface=true) {
-        if !__Initialized return;
-		state ??= __State; if state != __State state.Use();
-        
-        if (ImGui.__ExtFlags & ImGuiExtFlags.RENDERER_GM) {
-            if (!surface_exists(__State.Renderer.Surface)) {
-                __State.Renderer.Surface = surface_create(max(1, __State.Display.Width), max(1, __State.Display.Height));	
-            } else {
-                surface_resize(__State.Renderer.Surface, max(1, __State.Display.Width), max(1, __State.Display.Height));
-            }
-        }
 
-        var _w = display_get_gui_width(), _h = display_get_gui_height();
-        var _ww = __State.Engine.Window.GetWidth();
-        var _wh = __State.Engine.Window.GetHeight();
-        
-        if (_ww > 0 and _wh > 0) {
+	static __Render = function(state=undefined) {
+		if !__Initialized return;
+		state ??= __State; if state != __State state.Use();
+
+		__imgui_render();
+	}
+	
+	static __Draw = function(state=undefined, _resize_app_surface=true) {
+		if !__Initialized return;
+		state ??= __State; if state != __State state.Use();
+		
+		if (ImGui.__ExtFlags & ImGuiExtFlags.RENDERER_GM) {
+			if (!surface_exists(__State.Renderer.Surface)) {
+				__State.Renderer.Surface = surface_create(max(1, __State.Display.Width), max(1, __State.Display.Height));	
+			} else {
+				surface_resize(__State.Renderer.Surface, max(1, __State.Display.Width), max(1, __State.Display.Height));
+			}
+		}
+
+		var _w = display_get_gui_width(), _h = display_get_gui_height();
+		var _ww = __State.Engine.Window.GetWidth();
+		var _wh = __State.Engine.Window.GetHeight();
+		
+		if (_ww > 0 and _wh > 0) {
 			if (_resize_app_surface) {
 				if (__State.Engine.Window.GetHandle() == __MainWindowHandle) {
 					surface_resize(application_surface, _ww, _wh);
 				}
 			}
-        }
+		}
 
-        var _data = __State.__GetData();
-        __imgui_draw(_data);
+		var _data = __State.__GetData();
+		__imgui_draw(_data);
 
-        if (ImGui.__ExtFlags & ImGuiExtFlags.RENDERER_GM) {
-            buffer_seek(__State.Renderer.CmdBuffer, buffer_seek_start, 0);
-            if (buffer_read(__State.Renderer.CmdBuffer, buffer_bool)) { // data->Valid
-            	shader_set(shdImGui);
-            	surface_set_target(__State.Renderer.Surface);
-            	gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
-            	draw_clear_alpha(0, 0);
-            	var list_count = buffer_read(__State.Renderer.CmdBuffer, buffer_u32);
-            	for(var i = 0; i < list_count; i++) {
-            		var cmd_count = buffer_read(__State.Renderer.CmdBuffer, buffer_u32);
-            		for(var j = 0; j < cmd_count; j++) {
-            			if (!buffer_read(__State.Renderer.CmdBuffer, buffer_bool)) { // UserCallback != nullptr
-            				var tex_data = buffer_read(__State.Renderer.CmdBuffer, buffer_u32);
-            				var tex_id = -1;
-            				switch (tex_data & 0xF) {
-            					case ImGuiTextureType.Surface: {
-            						tex_id = surface_get_texture(tex_data >> 16);
-            						break;
-            					}
+		if (ImGui.__ExtFlags & ImGuiExtFlags.RENDERER_GM) {
+			buffer_seek(__State.Renderer.CmdBuffer, buffer_seek_start, 0);
+			if (buffer_read(__State.Renderer.CmdBuffer, buffer_bool)) { // data->Valid
+				shader_set(shdImGui);
+				surface_set_target(__State.Renderer.Surface);
+				gpu_set_blendmode_ext(bm_one, bm_inv_src_alpha);
+				draw_clear_alpha(0, 0);
+				var list_count = buffer_read(__State.Renderer.CmdBuffer, buffer_u32);
+				for(var i = 0; i < list_count; i++) {
+					var cmd_count = buffer_read(__State.Renderer.CmdBuffer, buffer_u32);
+					for(var j = 0; j < cmd_count; j++) {
+						if (!buffer_read(__State.Renderer.CmdBuffer, buffer_bool)) { // UserCallback != nullptr
+							var tex_data = buffer_read(__State.Renderer.CmdBuffer, buffer_u32);
+							var tex_id = -1;
+							switch (tex_data & 0xF) {
+								case ImGuiTextureType.Surface: {
+									tex_id = surface_get_texture(tex_data >> 16);
+									break;
+								}
 							
-            					case ImGuiTextureType.Font: {
-            						tex_id = sprite_get_texture(__State.Display.Font, 0);
-            						break;	
-            					}
+								case ImGuiTextureType.Font: {
+									tex_id = sprite_get_texture(__State.Display.Font, 0);
+									break;	
+								}
 							
-            					case ImGuiTextureType.Sprite: {
-            						tex_id = sprite_get_texture(tex_data >> 16, (tex_data >> 4) & 0xFF);
-            						break;	
-            					}
-            				}
+								case ImGuiTextureType.Sprite: {
+									tex_id = sprite_get_texture(tex_data >> 16, (tex_data >> 4) & 0xFF);
+									break;	
+								}
+							}
 
-            				var clip_x1 = buffer_read(__State.Renderer.CmdBuffer, buffer_f32);
-            				var clip_y1 = buffer_read(__State.Renderer.CmdBuffer, buffer_f32);
-            				var clip_x2 = buffer_read(__State.Renderer.CmdBuffer, buffer_f32);
-            				var clip_y2 = buffer_read(__State.Renderer.CmdBuffer, buffer_f32);
-            				shader_set_uniform_f_array(__Uniform, [clip_x1, clip_y1, clip_x2, clip_y2]);
-            				var vtx_count = buffer_read(__State.Renderer.CmdBuffer, buffer_u32);
-            				var vtx_buff = vertex_create_buffer_from_buffer_ext(__State.Renderer.CmdBuffer, ImGui.__VtxFormat, buffer_tell(__State.Renderer.CmdBuffer), vtx_count);
-            				vertex_submit(vtx_buff, pr_trianglelist, tex_id);
-            				buffer_seek(__State.Renderer.CmdBuffer, buffer_seek_relative, 20 * vtx_count);
-            				vertex_delete_buffer(vtx_buff);
-            			}
-            		}
-            	}
-            	surface_reset_target();
-            	shader_reset();
-            	gpu_set_blendmode(bm_normal);
+							var clip_x1 = buffer_read(__State.Renderer.CmdBuffer, buffer_f32);
+							var clip_y1 = buffer_read(__State.Renderer.CmdBuffer, buffer_f32);
+							var clip_x2 = buffer_read(__State.Renderer.CmdBuffer, buffer_f32);
+							var clip_y2 = buffer_read(__State.Renderer.CmdBuffer, buffer_f32);
+							shader_set_uniform_f_array(__Uniform, [clip_x1, clip_y1, clip_x2, clip_y2]);
+							var vtx_count = buffer_read(__State.Renderer.CmdBuffer, buffer_u32);
+							var vtx_buff = vertex_create_buffer_from_buffer_ext(__State.Renderer.CmdBuffer, ImGui.__VtxFormat, buffer_tell(__State.Renderer.CmdBuffer), vtx_count);
+							vertex_submit(vtx_buff, pr_trianglelist, tex_id);
+							buffer_seek(__State.Renderer.CmdBuffer, buffer_seek_relative, 20 * vtx_count);
+							vertex_delete_buffer(vtx_buff);
+						}
+					}
+				}
+				surface_reset_target();
+				shader_reset();
+				gpu_set_blendmode(bm_normal);
 
 				if _ww > 0 and _wh > 0 {
 					display_set_gui_size(_ww, _wh);
-            		display_set_gui_maximize(__State.Display.Scale, __State.Display.Scale, 0, 0);
+					display_set_gui_maximize(__State.Display.Scale, __State.Display.Scale, 0, 0);
 
 					if (__State.Engine.Window[$ "DrawBegin"]) {
 						__State.Engine.Window.DrawBegin();
@@ -4788,21 +4788,21 @@ function ImGui() constructor {
 					if (__State.Engine.Window[$ "DrawClear"]) {
 						__State.Engine.Window.DrawClear();
 					}
-                    
+					
 					draw_surface(__State.Renderer.Surface, 0, 0);
-                    
+					
 					if (__State.Engine.Window[$ "DrawEnd"]) {
 						__State.Engine.Window.DrawEnd();
 					}
 
 					display_set_gui_maximize();
 					display_set_gui_size(_w, _h);
-            	}
-            }
-        }
-    }
-    
-    return self;
+				}
+			}
+		}
+	}
+	
+	return self;
 };
 
 // Version Check
@@ -4812,9 +4812,9 @@ try {
 	show_debug_message("[ImGui_GM - INFO] Successfully passed version check");
 
 } catch(e) {
-    if e[$ "message"] {
-        show_error(string(e), true);
-    }
+	if e[$ "message"] {
+		show_error(string(e), true);
+	}
 
 	var ind = asset_get_index("ImGui_");
 	if (ind == -1) {
