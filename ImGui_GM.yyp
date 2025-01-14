@@ -28,6 +28,7 @@
     {"id":{"name":"ImGui_GM","path":"extensions/ImGui_GM/ImGui_GM.yy",},},
     {"id":{"name":"objExample","path":"objects/objExample/objExample.yy",},},
     {"id":{"name":"rmExample","path":"rooms/rmExample/rmExample.yy",},},
+    {"id":{"name":"__ImGuiConfig","path":"scripts/__ImGuiConfig/__ImGuiConfig.yy",},},
     {"id":{"name":"__ImGuiEnums","path":"scripts/__ImGuiEnums/__ImGuiEnums.yy",},},
     {"id":{"name":"__ImGuiFunctions","path":"scripts/__ImGuiFunctions/__ImGuiFunctions.yy",},},
     {"id":{"name":"__ImGuiGetCursor","path":"scripts/__ImGuiGetCursor/__ImGuiGetCursor.yy",},},
