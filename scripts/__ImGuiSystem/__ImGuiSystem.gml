@@ -28,8 +28,8 @@ function __ImGuiSystem()
 				Framerate: game_get_speed(gamespeed_fps)
 			}
 		};
-        
-        __allowSetCursor = true;
+		
+		__allowSetCursor = true;
 		
 		__Scale = 1;
 		__Font = -1;
@@ -110,10 +110,10 @@ function __ImGuiSystem()
 					var _cursor = __imgui_mouse_cursor();
 					if (_cursor != __CursorPrev) {
 						if (__allowSetCursor)
-                        {
-                            window_set_cursor(__ImGuiGetCursor(_cursor + 1));
-                        }
-                        
+						{
+							window_set_cursor(__ImGuiGetCursor(_cursor + 1));
+						}
+						
 						__CursorPrev = _cursor;
 					}
 				}

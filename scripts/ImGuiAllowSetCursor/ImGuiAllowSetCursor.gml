@@ -7,6 +7,6 @@
 
 function ImGuiAllowSetCursor(_state)
 {
-    static _system = __ImGuiSystem();
-    _system.__allowSetCursor = _state;
+	static _system = __ImGuiSystem();
+	_system.__allowSetCursor = _state;
 }
