@@ -426,8 +426,8 @@
   "optionsFile":"options.json",
   "packageId":"",
   "parent":{
-    "name":"ImGui_GM",
-    "path":"folders/ImGui_GM.yy",
+    "name":"(System)",
+    "path":"folders/ImGui_GM/(System).yy",
   },
   "productId":"",
   "resourceType":"GMExtension",

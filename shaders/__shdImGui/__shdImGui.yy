@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"__shdImGui",
+  "name":"__shdImGui",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/ImGui_GM/(System).yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

@@ -1,1 +1,1 @@
-ImGui.EndFrame();
+ImGuiEndFrame();

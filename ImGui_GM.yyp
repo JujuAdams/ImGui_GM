@@ -12,6 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Example","folderPath":"folders/Example.yy","name":"Example","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"ImGui_GM","folderPath":"folders/ImGui_GM.yy","name":"ImGui_GM","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"(System)","folderPath":"folders/ImGui_GM/(System).yy","name":"(System)","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"LICENSE.txt","CopyToMask":-1,"filePath":"datafiles/fonts","name":"LICENSE.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -27,9 +28,12 @@
     {"id":{"name":"ImGui_GM","path":"extensions/ImGui_GM/ImGui_GM.yy",},},
     {"id":{"name":"objExample","path":"objects/objExample/objExample.yy",},},
     {"id":{"name":"rmExample","path":"rooms/rmExample/rmExample.yy",},},
-    {"id":{"name":"ImGui_Misc","path":"scripts/ImGui_Misc/ImGui_Misc.yy",},},
-    {"id":{"name":"ImGui","path":"scripts/ImGui/ImGui.yy",},},
-    {"id":{"name":"shdImGui","path":"shaders/shdImGui/shdImGui.yy",},},
+    {"id":{"name":"__ImGuiEnums","path":"scripts/__ImGuiEnums/__ImGuiEnums.yy",},},
+    {"id":{"name":"__ImGuiFunctions","path":"scripts/__ImGuiFunctions/__ImGuiFunctions.yy",},},
+    {"id":{"name":"__ImGuiMisc","path":"scripts/__ImGuiMisc/__ImGuiMisc.yy",},},
+    {"id":{"name":"__ImGuiSystem","path":"scripts/__ImGuiSystem/__ImGuiSystem.yy",},},
+    {"id":{"name":"ImGuiDraw","path":"scripts/ImGuiDraw/ImGuiDraw.yy",},},
+    {"id":{"name":"__shdImGui","path":"shaders/__shdImGui/__shdImGui.yy",},},
     {"id":{"name":"sprExample","path":"sprites/sprExample/sprExample.yy",},},
     {"id":{"name":"sprExample2","path":"sprites/sprExample2/sprExample2.yy",},},
   ],
