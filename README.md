@@ -1,3 +1,7 @@
+# This is a fork of [nomminn's ImGui implementation for GameMaker](https://github.com/nommiin/ImGui_GM/).
+
+&nbsp;
+
 # ImGui_GM
 
 A Windows only ImGui wrapper for modern GameMaker.
