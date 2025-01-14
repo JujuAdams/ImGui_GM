@@ -5,6 +5,8 @@ __ImGuiSystem();
 function __ImGuiSystem()
 {
 	static _system = undefined;
+	
+	if (not IMGUI_ENABLED) return undefined;
 	if (_system != undefined) return _system;
 	
 	_system = {};
