@@ -1,5 +1,7 @@
 function ImGuiDraw()
 {
+    if (not IMGUI_ENABLED) return;
+    
 	static _system = __ImGuiSystem();
 	with(_system)
 	{

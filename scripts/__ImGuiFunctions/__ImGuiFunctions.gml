@@ -476,7 +476,7 @@ function ImGuiColorPicker3(label, col, flags=ImGuiColorEditFlags.None) {
 
 /// @function ColorEdit4(label, col, flags)
 /// @argument {String} label
-/// @argument {ImColor} col
+/// @argument {ImGuiColor} col
 /// @argument {Enum.ImGuiCol} [flags=ImGuiColorEditFlags.None]
 /// @context ImGui
 /// @return {Bool}
@@ -486,7 +486,7 @@ function ImGuiColorEdit4(label, col, flags=ImGuiColorEditFlags.None) {
 
 /// @function ColorPicker4(label, col, flags)
 /// @argument {String} label
-/// @argument {ImColor} col
+/// @argument {ImGuiColor} col
 /// @argument {Enum.ImGuiCol} [flags=ImGuiColorEditFlags.None]
 /// @context ImGui
 /// @return {Bool}

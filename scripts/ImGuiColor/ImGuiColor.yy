@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ImGuiColor",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ImGuiColor",
+  "parent":{
+    "name":"ImGui_GM",
+    "path":"folders/ImGui_GM.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
