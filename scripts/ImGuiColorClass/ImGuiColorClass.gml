@@ -1,12 +1,11 @@
-// All the silly stuff that's too messy for ImGui.gml
 // Used by Color*4 functions, use .Color to get BGR value for GM functions
-function ImGuiColor(red, green, blue, alpha=1) constructor {
+function ImGuiColorClass(redOrColor, greenOrAlpha, blue=undefined, alpha=1) constructor {
 	/*
-		ImGuiColor(c_red);
-		ImGuiColor(c_red, 0.5);
-		ImGuiColor(255, 255, 255);
-		ImGuiColor(128, 255, 255, 0.5);
-		ImGuiColor(c_red | (128 << 24)); Alpha is most-significant byte, basically RGBA int
+		ImGuiColorClass(c_red);
+		ImGuiColorClass(c_red, 0.5);
+		ImGuiColorClass(255, 255, 255);
+		ImGuiColorClass(128, 255, 255, 0.5);
+		ImGuiColorClass(c_red | (128 << 24)); Alpha is most-significant byte, basically RGBA int
 	*/
 	a = alpha;
 	if (blue != undefined) {

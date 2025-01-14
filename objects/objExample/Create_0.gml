@@ -13,9 +13,9 @@ _static = __ImGuiSystem();
 col = c_blue;					 // for TextColored
 col2 = c_white;				   // for Image & ColorPicker
 col3 = c_lime;					// for ColorPicker3
-col4 = new ImGuiColor(c_aqua, 0.5);  // for ColorPicker4
+col4 = new ImGuiColorClass(c_aqua, 0.5);  // for ColorPicker4
 col5 = c_fuchsia;
-col6 = new ImGuiColor(irandom(255), irandom(255), irandom(255), random(1));
+col6 = new ImGuiColorClass(irandom(255), irandom(255), irandom(255), random(1));
 dir = ImGuiDir.Right;			 // for ArrowButton
 
 surf = -1;						// for Surface

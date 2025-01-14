@@ -34,7 +34,7 @@
     {"id":{"name":"__ImGuiGetCursor","path":"scripts/__ImGuiGetCursor/__ImGuiGetCursor.yy",},},
     {"id":{"name":"__ImGuiGetMapping","path":"scripts/__ImGuiGetMapping/__ImGuiGetMapping.yy",},},
     {"id":{"name":"__ImGuiSystem","path":"scripts/__ImGuiSystem/__ImGuiSystem.yy",},},
-    {"id":{"name":"ImGuiColor","path":"scripts/ImGuiColor/ImGuiColor.yy",},},
+    {"id":{"name":"ImGuiColorClass","path":"scripts/ImGuiColorClass/ImGuiColorClass.yy",},},
     {"id":{"name":"ImGuiDraw","path":"scripts/ImGuiDraw/ImGuiDraw.yy",},},
     {"id":{"name":"__shdImGui","path":"shaders/__shdImGui/__shdImGui.yy",},},
     {"id":{"name":"sprExample","path":"sprites/sprExample/sprExample.yy",},},

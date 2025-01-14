@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ImGuiColor",
+  "%Name":"ImGuiColorClass",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ImGuiColor",
+  "name":"ImGuiColorClass",
   "parent":{
     "name":"ImGui_GM",
     "path":"folders/ImGui_GM.yy",

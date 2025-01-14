@@ -11,7 +11,7 @@
     {"name":"__ImGuiFunctions","order":4,"path":"scripts/__ImGuiFunctions/__ImGuiFunctions.yy",},
     {"name":"__ImGuiGetCursor","order":2,"path":"scripts/__ImGuiGetCursor/__ImGuiGetCursor.yy",},
     {"name":"__ImGuiGetMapping","order":1,"path":"scripts/__ImGuiGetMapping/__ImGuiGetMapping.yy",},
-    {"name":"ImGuiColor","order":2,"path":"scripts/ImGuiColor/ImGuiColor.yy",},
+    {"name":"ImGuiColorClass","order":2,"path":"scripts/ImGuiColorClass/ImGuiColorClass.yy",},
     {"name":"ImGuiDraw","order":1,"path":"scripts/ImGuiDraw/ImGuiDraw.yy",},
     {"name":"__shdImGui","order":3,"path":"shaders/__shdImGui/__shdImGui.yy",},
     {"name":"sprExample","order":2,"path":"sprites/sprExample/sprExample.yy",},
