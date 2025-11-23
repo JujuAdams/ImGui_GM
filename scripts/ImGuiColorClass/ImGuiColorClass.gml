@@ -9,18 +9,18 @@ function ImGuiColorClass(redOrColor, greenOrAlpha, blue=undefined, alpha=1) cons
 	*/
 	a = alpha;
 	if (blue != undefined) {
-		r = red;
-		g = green;
+		r = redOrColor;
+		g = greenOrAlpha;
 		b = blue;
 	} else {
-		r = color_get_red(red);
-		g = color_get_green(red);
-		b = color_get_blue(red);
+		r = color_get_red(redOrColor);
+		g = color_get_green(redOrColor);
+		b = color_get_blue(redOrColor);
 		
-		if (green != undefined) {
-			a = green;	
+		if (greenOrAlpha != undefined) {
+			a = greenOrAlpha;	
 		} else {
-			var high = (red >> 24) & 0xFF;
+			var high = (redOrColor >> 24) & 0xFF;
 			if (high > 0) {
 				a = high / 0xFF;	
 			}
