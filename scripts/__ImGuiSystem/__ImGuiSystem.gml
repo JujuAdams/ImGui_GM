@@ -29,7 +29,7 @@ function __ImGuiSystem()
 			}
 		};
 		
-		__allowSetCursor = true;
+		__allowSetCursor = IMGUI_ENABLED;
 		
 		__Scale = 1;
 		__Font = -1;
@@ -107,14 +107,14 @@ function __ImGuiSystem()
 					for(var i = 0; i < 3; i++) __imgui_mouse(i, device_mouse_check_button(0, i + 1));
 					if (mouse_wheel_up()) __imgui_mouse_wheel(0, 1);
 					else if (mouse_wheel_down()) __imgui_mouse_wheel(0, -1);
-					var _cursor = __imgui_mouse_cursor();
-					if (_cursor != __CursorPrev) {
-						if (__allowSetCursor)
-						{
+					
+					if (__allowSetCursor)
+					{
+						var _cursor = __imgui_mouse_cursor();
+						if (_cursor != __CursorPrev) {
 							window_set_cursor(__ImGuiGetCursor(_cursor + 1));
+							__CursorPrev = _cursor;
 						}
-						
-						__CursorPrev = _cursor;
 					}
 				}
 			}

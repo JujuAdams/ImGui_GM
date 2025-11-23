@@ -8,5 +8,23 @@
 function ImGuiAllowSetCursor(_state)
 {
 	static _system = __ImGuiSystem();
-	_system.__allowSetCursor = _state;
+	
+	if (not IMGUI_ENABLED) return;
+	
+	with(_system)
+	{
+		if (_state)
+		{
+			if (not __allowSetCursor)
+			{
+				__CursorPrev = undefined;
+			}
+			
+			__allowSetCursor = true;
+		}
+		else
+		{
+			__allowSetCursor = false;
+		}
+	}
 }
